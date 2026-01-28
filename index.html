@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOGUE THREAD - Contemporary Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #2B2B2B;
+            --cream: #F5F1E8;
+            --terracotta: #E07A5F;
+            --sage: #81B29A;
+            --mustard: #F2CC8F;
+            --off-white: #FEFEFE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--off-white);
+            border-bottom: 1px solid rgba(43, 43, 43, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            font-style: italic;
+            letter-spacing: -0.05rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--terracotta);
+        }
+
+        .hero {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 100px);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: 'SS26';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 15rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.1);
+            letter-spacing: -0.1rem;
+        }
+
+        .collection-badge {
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--mustard);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.3;
+            animation: rotate 20s linear infinite;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            padding: 6rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--cream);
+        }
+
+        .eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.05rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            font-weight: 300;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .cta-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            text-decoration: none;
+            border-bottom: 2px solid var(--charcoal);
+            padding-bottom: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-link:hover {
+            color: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        .featured-collections {
+            padding: 6rem 4rem;
+            background: var(--off-white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--cream);
+        }
+
+        .collection-card:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            color: white;
+            transform: translateY(50%);
+            transition: transform 0.4s ease;
+        }
+
+        .collection-card:hover .collection-overlay {
+            transform: translateY(0);
+        }
+
+        .collection-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-card p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .collection-card:hover p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .color-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--terracotta), var(--sage), var(--mustard));
+        }
+
+        .manifesto {
+            padding: 8rem 4rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .manifesto h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .manifesto p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .accent-line {
+            width: 80px;
+            height: 3px;
+            background: var(--terracotta);
+            margin: 2rem auto;
+        }
+
+        footer {
+            padding: 3rem 4rem;
+            background: var(--off-white);
+            border-top: 1px solid rgba(43, 43, 43, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .collection-card:nth-child(1) {
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VOGUE THREAD</div>
+        <nav>
+            <a href="#new">New Arrivals</a>
+            <a href="#women">Women</a>
+            <a href="#men">Men</a>
+            <a href="#editorial">Editorial</a>
+            <a href="#sale">Sale</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image">
+            <div class="collection-badge">NEW<br>SPRING<br>SUMMER</div>
+        </div>
+        <div class="hero-content">
+            <div class="eyebrow">Spring Summer 2026</div>
+            <h1>Effortless<br>Elegance</h1>
+            <p class="hero-description">Discover our latest collection where contemporary design meets timeless sophistication. Carefully curated pieces for the modern wardrobe.</p>
+            <div class="cta-container">
+                <a href="#" class="cta-link">Explore Collection →</a>
+                <a href="#" class="cta-link">View Lookbook →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-collections">
+        <h2 class="section-title">Featured Collections</h2>
+        <div class="collections-grid">
+            <div class="collection-card">
+                <div class="color-bar"></div>
+                <div class="collection-overlay">
+                    <h3>Urban Minimalist</h3>
+                    <p>Clean lines and neutral tones for everyday sophistication</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="color-bar"></div>
+                <div class="collection-overlay">
+                    <h3>Summer Breeze</h3>
+                    <p>Lightweight fabrics in vibrant hues</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="color-bar"></div>
+                <div class="collection-overlay">
+                    <h3>Evening Edit</h3>
+                    <p>Sophisticated pieces for special occasions</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="color-bar"></div>
+                <div class="collection-overlay">
+                    <h3>Athleisure Luxe</h3>
+                    <p>Where comfort meets style</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="color-bar"></div>
+                <div class="collection-overlay">
+                    <h3>Heritage Denim</h3>
+                    <p>Timeless classics reimagined</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="manifesto">
+        <div class="manifesto-content">
+            <h2>Fashion with Purpose</h2>
+            <div class="accent-line"></div>
+            <p>We believe in creating clothing that transcends trends. Every piece is thoughtfully designed, ethically produced, and crafted to last. This is fashion that respects both you and our planet.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Stores</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="social-icons">
+            <span>📷</span>
+            <span>🐦</span>
+            <span>📌</span>
+        </div>
+    </footer>
+</body>
+</html>
